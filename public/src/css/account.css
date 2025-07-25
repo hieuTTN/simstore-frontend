@@ -1,0 +1,443 @@
+
+.contentcart {
+    background-color: #f8f8f8;
+    padding-bottom: 100px;
+}
+
+.cartbds {
+    margin-top: 30px;
+    margin-bottom: 100px;
+}
+
+.navleft {
+    background-color: #fff;
+    padding-bottom: 100px;
+}
+
+.avaaccount {
+    padding: 20px;
+}
+
+.navright {
+    background-color: #fff;
+    min-height: 500px;
+}
+
+.activetabdv {
+    background-color: #FEEEE7;
+}
+
+
+/* .navright{
+    padding: 15px 20px 50px 20px;
+} */
+
+.headeraccount {
+    padding: 15px 20px 10px 20px;
+    border-bottom: 2px solid #f5f5f0;
+    margin-bottom: 20px;
+    position: relative;
+    min-height: 60px;
+}
+
+.headeraccount .right_flex {
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
+.btnsuathongtin {
+    height: 40px;
+    margin-top: 10px;
+    background: #fcaf17;
+    color: #FFF;
+    border-radius: 4px;
+    border: none;
+    margin-right: 10px;
+}
+
+.contentacc {
+    padding: 0px 20px 10px 20px;
+}
+
+.preinfor {
+    display: block;
+    line-height: 40px;
+    font-family: 'SVN-Gilroy', sans-serif;
+}
+
+.inforaccleft {
+    width: 50%;
+    float: left;
+}
+
+.fontyel {
+    color: #fcaf17 !important;
+    font-family: 'SVN-Gilroy Bold';
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+.smyl {
+    color: #7A7A9D;
+    font-family: 'SVN-Gilroy';
+    font-size: 0.9rem;
+    margin-left: 10px;
+}
+
+.passacc {
+    padding-left: 20px;
+}
+
+.lbacc {
+    margin-bottom: 7px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin-top: 15px;
+}
+
+.lbadd {
+    display: block;
+}
+
+.singleadd {
+    padding-bottom: 10px;
+    border-bottom: 1px solid #DDE1EF;
+}
+
+.actionacc {
+    display: block;
+    cursor: pointer;
+}
+
+.acsua {
+    color: #7A7A9D;
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+.acdel {
+    color: #fcaf17;
+    font-weight: 600;
+}
+
+.tableadd td,
+tfoot,
+th,
+thead,
+tr {
+    border-style: none !important;
+}
+
+.tableadd td {
+    padding: 0px;
+    padding-top: 8px;
+}
+
+.tdleft {
+    font-weight: initial;
+    color: #7A7A9D;
+    width: 20%;
+}
+
+.tdright {
+    font-weight: 550;
+    font-size: 0.9rem;
+}
+
+.addressdef {
+    color: #27AE60;
+    font-size: 11px;
+    padding-left: 10px;
+}
+
+.fomd {
+    margin-top: 20px;
+}
+
+.formadd {
+    position: relative;
+    padding-top: 20px;
+}
+
+.formadd input {
+    border: 1px solid #DDE1EF;
+    border-radius: 4px;
+    /* padding: 18px 10px 0px 12px; */
+    margin: 0;
+    min-height: 48px;
+    text-overflow: ellipsis;
+    box-shadow: none;
+}
+
+.formadd select {
+    border: 1px solid #DDE1EF;
+    border-radius: 4px;
+    margin: 0;
+    min-height: 48px;
+}
+
+.formadd input:focus~.lbsa {
+    display: block;
+    font-size: 12px;
+    color: #7A7A9D;
+    position: absolute;
+    top: 20px;
+    left: 20px;
+}
+
+.lbsatop {
+    font-size: 12px;
+    color: #7A7A9D;
+    position: absolute;
+    top: 20px;
+    left: 20px;
+}
+
+.formadd input:focus::placeholder {
+    opacity: 0;
+}
+
+.textrf {
+    color: #7A7A9D;
+    font-family: 'SVN-Gilroy';
+    line-height: 60px;
+    margin-right: 10px;
+}
+
+.thead-default {
+    background-color: #f8f8f8;
+    border-top: 1px solid #e0e0d1 !important;
+    border-bottom: 1px solid #e0e0d1 !important;
+}
+
+.thead-default th {
+    font-family: 'SVN-Gilroy Bold';
+    /* border: none; */
+    text-align: left;
+    line-height: 16px;
+    vertical-align: middle;
+}
+
+.thead-default td {
+    font-size: 0.9rem;
+}
+
+#listinvoice td~* {
+    font-size: 0.9rem;
+}
+
+.floatr {
+    text-align: right !important;
+}
+
+.yls {
+    color: #fcaf17;
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+.huydon {
+    font-size: 1.1rem;
+    cursor: pointer;
+}
+
+.sinv {
+    padding-top: 20px;
+}
+
+.tabdv {
+    width: 100%;
+    height: 40px;
+    cursor: pointer;
+    padding-top: 5px;
+    padding-left: 20px;
+}
+
+.tabdv a {
+    color: #000;
+    text-decoration: none;
+    background: transparent;
+}
+
+.tabdv:hover {
+    background-color: #FEEEE7;
+}
+
+.imgau {
+    width: 20px;
+}
+.sinv {
+    padding-top: 20px;
+}
+
+.tabdv {
+    width: 100%;
+    height: 40px;
+    cursor: pointer;
+    padding-top: 5px;
+    padding-left: 20px;
+}
+
+.tabdv a {
+    color: #000;
+    text-decoration: none;
+    background: transparent;
+}
+
+.tabdv:hover {
+    background-color: #FEEEE7;
+}
+
+.imgau {
+    width: 20px;
+}
+.avaaccount {
+    padding: 20px;
+}
+.avataracc {
+    display: block;
+    margin: 0 auto;
+}
+
+.btnlogoutacc {
+    display: block;
+    line-height: 24px;
+    background: #fcaf17;
+    color: #FFF;
+    border-radius: 12px;
+    border: none;
+    width: 100%;
+}
+
+.sinv {
+    padding-top: 20px;
+}
+
+.tabdv {
+    width: 100%;
+    height: 40px;
+    cursor: pointer;
+    padding-top: 5px;
+    padding-left: 20px;
+}
+
+.tabdv a {
+    color: #000;
+    text-decoration: none;
+    background: transparent;
+}
+
+.tabdv:hover {
+    background-color: #FEEEE7;
+}
+
+.imgau {
+    width: 20px;
+    margin-right: 10px;
+}
+
+
+.headerdetail {
+    font-size: 0.9rem !important;
+}
+
+.headerdetail .yls {
+    font-size: 0.9rem !important;
+}
+
+.shipinfor {
+    margin-top: 30px;
+}
+
+.tennguoinhan {
+    font-weight: bold;
+}
+
+.blockinfor {
+    min-height: 120px;
+    padding: 13px 25px 10px 20px;
+    border: 1px solid #DDE1EF;
+    background: none;
+    margin-top: 10px;
+}
+
+.blockinfor span {
+    color: #212B25;
+    font-size: 14px;
+    line-height: 16px;
+    vertical-align: top;
+    text-align: left;
+}
+
+.ttshipinfor {
+    margin-top: 10px;
+}
+
+.imgdetailacc {
+    width: 100px;
+}
+
+.slmobile {
+    display: none;
+}
+
+.phoneacc {
+    display: block;
+    margin-top: 7px;
+}
+
+.contentdetailproduct {
+    padding-top: 30px;
+}
+
+.imgdetailpro {
+    width: 100%;
+}
+
+.detailnamepro {
+    font-family: 'SVN-Gilroy';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 22px;
+    line-height: 32px;
+    text-transform: capitalize;
+    color: #17191C;
+}
+
+.blockdetailpro {
+    position: relative;
+}
+
+.shipinfor {
+    margin-top: 30px;
+}
+
+.tennguoinhan {
+    font-weight: bold;
+}
+
+.blockinfor {
+    min-height: 120px;
+    padding: 13px 25px 10px 20px;
+    border: 1px solid #DDE1EF;
+    background: none;
+    margin-top: 10px;
+}
+
+.blockinfor span {
+    color: #212B25;
+    font-size: 14px;
+    line-height: 16px;
+    vertical-align: top;
+    text-align: left;
+}
+
+.ttshipinfor {
+    margin-top: 10px;
+}
+
+.imgdetailacc {
+    width: 100px;
+}
+
