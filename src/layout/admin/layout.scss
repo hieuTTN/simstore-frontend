@@ -13732,3 +13732,30 @@ label {
     font-weight: bold;
     margin-bottom: 5px;
 }
+
+.singlekichthuoc{
+    background: #bdbdbd;
+    padding: 4px 10px;
+    border-radius: 5px;
+    position: relative;
+    margin-top: 5px;
+}
+.singlekichthuocdathem{
+    background: #fff;
+    padding: 4px 10px;
+    border-radius: 5px;
+    position: relative;
+    margin-top: 15px;
+    -webkit-box-shadow: 0 0 2px #000;
+        box-shadow: 0 0 2px #000;
+}
+.iconxoakt{
+    position: absolute;            /* NEW */
+    right: 5px;                    /* NEW */
+    top: 50%;   
+    transform: translateY(-50%);
+    color: red;
+    cursor: pointer;
+    text-align: center;
+    margin: 0 auto;
+}

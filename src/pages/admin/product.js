@@ -111,33 +111,33 @@ const AdminProduct = ()=>{
                         </thead>
                         <tbody>
                             {items.map((item, i) => {
-  const ms = item.sizes.map((size, j) => (
-    <React.Fragment key={j}>
-      <br />
-      <strong className="sizetable">{size.name}</strong>: {formatMoney(size.price)}
-    </React.Fragment>
-  ));
+                                const ms = item.sizes.map((size, j) => (
+                                    <React.Fragment key={j}>
+                                    <br />
+                                    <strong className="sizetable">{size.name}</strong>: {formatMoney(size.price)}
+                                    </React.Fragment>
+                                ));
 
-  return (
-    <tr key={item.id}>
-      <td>{item.id}</td>
-      <td>{item.category.name} - {item.category.simType}</td>
-      <td>{item.name}</td>
-      <td>{formatMoney(item.price)}</td>
-      <td>{item.createdDate}</td>
-      <td>{item.quantitySold}</td>
-      <td>
-        {item.category.simType !== 'SIM_SO_DEP' ? ms : ''}
-      </td>
-      <td className="sticky-col">
-        <i onClick={() => deleteData(item.id)} className="fa fa-trash-alt iconaction"></i>
-        <a href={`addproduct?id=${item.id}`}>
-          <i className="fa fa-edit iconaction"></i><br />
-        </a>
-      </td>
-    </tr>
-  );
-})}
+                                return (
+                                    <tr key={item.id}>
+                                    <td>{item.id}</td>
+                                    <td>{item.category.name} - {item.category.simType}</td>
+                                    <td>{item.name}</td>
+                                    <td>{formatMoney(item.price)}</td>
+                                    <td>{item.createdDate}</td>
+                                    <td>{item.quantitySold}</td>
+                                    <td>
+                                        {item.category.simType !== 'SIM_SO_DEP' ? ms : ''}
+                                    </td>
+                                    <td className="sticky-col">
+                                        <i onClick={() => deleteData(item.id)} className="fa fa-trash-alt iconaction"></i>
+                                        <a href={`add-product?id=${item.id}`}>
+                                        <i className="fa fa-edit iconaction"></i><br />
+                                        </a>
+                                    </td>
+                                    </tr>
+                                );
+                            })}
 
                         </tbody>
                     </table>
