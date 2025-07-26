@@ -17,11 +17,11 @@ const AdminBlog = ()=>{
     }, []);
 
     const getBlog = async() =>{
-        var response = await getMethod('/api/blog/public/findAll?&size='+size+'&sort=id,desc&page='+0)
+        var response = await getMethod('/api/blog/public/findAll-page?&size='+size+'&sort=id,desc&page='+0)
         var result = await response.json();
         setItems(result.content)
         setpageCount(result.totalPages)
-        url = '/api/blog/public/findAll?&size='+size+'&sort=id,desc&page='
+        url = '/api/blog/public/findAll-page?&size='+size+'&sort=id,desc&page='
     };
 
     const handlePageClick = async (data)=>{

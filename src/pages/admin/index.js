@@ -25,7 +25,7 @@ const AdminIndex = ()=>{
         var response = await getMethod('/api/statistic/admin/revenue-this-month')
         var result = await response.text();
         setdoanhThuThang(result)
-        var response = await getMethod('/api/statistic/admin/number-user')
+        var response = await getMethod('/api/statistic/admin/number-admin')
         var result = await response.text();
         setsoQuanTri(result)
         var response = await getMethod('/api/statistic/admin/number-product')
@@ -107,7 +107,7 @@ const AdminIndex = ()=>{
                     </div>
                     <div class="col-md-4">
                         <div class="thongke2">
-                            <div class="texts">Số lượng tài khoản</div>
+                            <div class="texts">Số lượng quản trị</div>
                             <div>
                             </div>
                             <div class="soluong">

@@ -49,8 +49,6 @@ async function saveBlog() {
 var linkbanner = '';
 const AdminAddCategory = ()=>{
     const [category, setCategory] = useState(null);
-    const [items, setItems] = useState([]);
-    const [selectParent, setselectParent] = useState(null);
     useEffect(()=>{
         const getById = async() =>{
             var uls = new URL(document.URL)
@@ -58,61 +56,23 @@ const AdminAddCategory = ()=>{
             if(id != null){
                 var response = await getMethod('/api/category/admin/findById?id='+id)
                 var result = await response.json();
+                document.getElementById("simType").value = result.simType;
                 setCategory(result)
-                linkbanner = result.imageBanner
-                document.getElementById("primaryCate").checked = result.isPrimary
-                document.getElementById("imgpreview").src = result.imageBanner
-                if(result.categoryParentId != null){
-                    var response = await getMethod('/api/category/public/findPrimaryCategory')
-                    var cates = await response.json();
-                    for(var i=0; i< cates.length; i++){
-                        if(cates[i].id == result.categoryParentId){
-                            setselectParent(cates[i]);
-                            break;
-                        }
-                    }
-                }
             }
         };
         getById();
-        getData();
     }, []);
-
-    const getData = async() =>{
-        var response = await getMethod('/api/category/public/findPrimaryCategory')
-        var result = await response.json();
-        setItems(result)
-    };
-
-    
-    function onchangeFile(){
-        const [file] = document.getElementById("fileimage").files
-        if (file) {
-            document.getElementById("imgpreview").src = URL.createObjectURL(file)
-        }
-    }
 
 
     async function saveCategory() {
-        document.getElementById("loading").style.display = 'block'
         var uls = new URL(document.URL)
         var id = uls.searchParams.get("id");
-        var linktam = await uploadSingleFile(document.getElementById('fileimage'))
-        if(linktam != null) linkbanner = linktam
-        var url = '/api/category/admin/create';
-        if (id != null) {
-            url = '/api/category/admin/update';
-        }
         var obj = {
             "id": id,
             "name": document.getElementById("catename").value,
-            "isPrimary": document.getElementById("primaryCate").checked,
-            "imageBanner": linkbanner
+            "simType": document.getElementById("simType").value,
         };
-        if(selectParent != null){
-            obj.category = { id: selectParent.id };
-        }
-        const response = await postMethodPayload(url,obj)
+        const response = await postMethodPayload('/api/category/admin/create',obj)
         if (response.status < 300) {
             Swal.fire({
                 title: "Thông báo",
@@ -126,7 +86,6 @@ const AdminAddCategory = ()=>{
             var result = await response.json()
             toast.warning(result.defaultMessage);
         }
-        document.getElementById("loading").style.display = 'none'
     }
 
     return (
@@ -141,28 +100,11 @@ const AdminAddCategory = ()=>{
             <div class="col-sm-5">
                     <label class="lb-form">Tên danh mục</label>
                     <input defaultValue={category?.name} id="catename" type="text" class="form-control"/>
-                    <label class="checkbox-custom">Danh mục chính 
-                        <input id="primaryCate" type="checkbox"/>
-                        <span class="checkmark-checkbox"></span>
-                    </label><br/>
-                    <label class="lb-form">Ảnh danh mục</label>
-                    <input onChange={onchangeFile} id="fileimage" type="file" class="form-control"/>
-                    <img id="imgpreview" className='imgadd'/>
-                    <label class="lb-form">Danh mục cha</label>
-                    <Select
-                        options={items}
-                        value={selectParent}
-                        onChange={setselectParent}
-                        getOptionLabel={(option) => option.name} 
-                        getOptionValue={(option) => option.id}    
-                        closeMenuOnSelect={false}
-                        name='danhmuccha'
-                        placeholder="Chọn danh mục cha"
-                    />
-                    <br/>
-                    <div id="loading">
-                        <div class="bar1 bar"></div>
-                    </div><br/>
+                    <label class="lb-form">Loại sim</label>
+                    <select id="simType" class="form-select">
+                        <option value="SIM_MANG">Sim mạng</option>
+                        <option value="SIM_SO_DEP">Sim số đẹp</option>
+                    </select><br/><br/>
                     <button onClick={()=>saveCategory()} class="btn btn-success form-control action-btn">Thêm/ Cập nhật danh mục</button>
                 </div>
             </main>

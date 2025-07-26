@@ -17,11 +17,11 @@ const AdminCategory = ()=>{
     }, []);
 
     const getData = async() =>{
-        var response = await getMethod('/api/category/public/search?&size='+size+'&q=&page='+0)
+        var response = await getMethod('/api/category/public/all-page?&size='+size+'&q=&page='+0)
         var result = await response.json();
         setItems(result.content)
         setpageCount(result.totalPages)
-        url = '/api/category/public/search?&size='+size+'&q=&page='
+        url = '/api/category/public/all-page?&size='+size+'&q=&page='
     };
 
     const handlePageClick = async (data)=>{
@@ -49,6 +49,15 @@ const AdminCategory = ()=>{
         }
     }
 
+    function loadType(type){
+        if(type == "SIM_MANG"){
+            return "Sim mạng";
+        }
+        else{
+            return "Sim số đẹp";
+        }
+    }
+
     return (
         <>
         <div class="headerpageadmin d-flex justify-content-between align-items-center p-3 bg-light border">
@@ -66,9 +75,8 @@ const AdminCategory = ()=>{
                         <thead>
                             <tr>
                                 <th>id</th>
-                                <th>Ảnh danh mục</th>
                                 <th>Tên danh mục</th>
-                                <th>Danh mục cha</th>
+                                <th>Loại sim</th>
                                 <th class="sticky-col">Hành động</th>
                             </tr>
                         </thead>
@@ -76,9 +84,8 @@ const AdminCategory = ()=>{
                             {items.map((item=>{
                                 return  <tr>
                                     <td>{item.id}</td>
-                                    <td><img src={item.imageBanner} className='imgcate'/></td>
                                     <td>{item.name}</td>
-                                    <td>{item.categoryParentName}</td>
+                                    <td>{loadType(item.simType)}</td>
                                     <td class="sticky-col">
                                         <a href={'add-category?id='+item.id} class="edit-btn"><i className='fa fa-edit'></i></a>
                                         <button onClick={()=>deleteData(item.id)} class="delete-btn"><i className='fa fa-trash'></i></button>

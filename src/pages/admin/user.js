@@ -45,22 +45,22 @@ const AdminUser = ()=>{
     const [items, setItems] = useState([]);
     const [pageCount, setpageCount] = useState(0);
     useEffect(()=>{
-        const getUser = async() =>{
-            var response = await getMethod('/api/admin/get-user-by-role?&size='+size+'&q=&sort=id,desc&page='+0)
-            var result = await response.json();
-            setItems(result.content)
-            setpageCount(result.totalPages)
-            url = '/api/admin/get-user-by-role?&size='+size+'&q=&sort=id,desc&page='
-        };
         getUser();
     }, []);
 
+    const getUser = async() =>{
+        var response = await getMethod('/api/user/admin/get-user-by-role-page?&size='+size+'&q=&sort=id,desc&page='+0)
+        var result = await response.json();
+        setItems(result.content)
+        setpageCount(result.totalPages)
+        url = '/api/user/admin/get-user-by-role-page?&size='+size+'&q=&sort=id,desc&page='
+    };
 
     async function filterUser(){
         var role = document.getElementById("role").value
-        var curUrl = '/api/admin/get-user-by-role?&size='+size+'&q=&sort=id,desc&role='+role+'&page=';
+        var curUrl = '/api/user/admin/get-user-by-role-page?&size='+size+'&q=&sort=id,desc&role='+role+'&page=';
         if(role == ""){
-            curUrl = '/api/admin/get-user-by-role?&size='+size+'&q=&sort=id,desc&page=';
+            curUrl = '/api/user/admin/get-user-by-role-page?&size='+size+'&q=&sort=id,desc&page=';
         }
         var response = await getMethod(curUrl+0)
         var result = await response.json();
@@ -82,7 +82,7 @@ const AdminUser = ()=>{
         if (con == false) {
             return;
         }
-        const response = await postMethod('/api/admin/lockOrUnlockUser?id=' + id)
+        const response = await postMethod('/api/user/admin/lockOrUnlockUser?id=' + id)
         if (response.status < 300) {
             var mess = '';
             if (type == 1) {
@@ -96,7 +96,23 @@ const AdminUser = ()=>{
             toast.error("Thất bại");
         }
     }
+
+    function setAccChange(id, role) {
+        document.getElementById("idacc").value = id;
+        document.getElementById("rolechange").value = role; 
+    }
     
+    async function changerole() {
+        var id = document.getElementById("idacc").value
+        var role = document.getElementById("rolechange").value
+        const response = await postMethod('/api/user/admin/change-role?id=' + id+'&role='+role);
+        if (response.status < 300) {
+            toast.success("Thành công!");
+            getUser();
+        } else {
+            toast.error("Thất bại");
+        }
+    }
     
     return (
         <>
@@ -122,7 +138,7 @@ const AdminUser = ()=>{
                         <thead>
                             <tr>
                                 <th>id</th>
-                                <th>Tên đăng nhập</th>
+                                <th>Email</th>
                                 <th>Họ tên</th>
                                 <th>Số điện thoại</th>
                                 <th>Ngày tạo</th>
@@ -133,18 +149,22 @@ const AdminUser = ()=>{
                         <tbody>
                             {items.map((item=>{
                                 var btn = '';
-                                if (item.actived == 0) {
+                                if (item.actived == false) {
                                     var btn = <button onClick={()=>lockOrUnlock(item.id,0)} class="btn btn-danger"><i class="fa fa-unlock"></i></button>
                                 } else {
                                     var btn = <button onClick={()=>lockOrUnlock(item.id,1)} class="btn btn-primary"><i class="fa fa-lock"></i></button>
                                 }
                                 return  <tr>
                                     <td>{item.id}</td>
-                                    <td>{item.username}</td>
-                                    <td>{item.fullname}</td>
+                                    <td>{item.email} 
+                                        {item.userType=="GOOGLE"?<img src="/image/google.png" class="googleicon"/>:<></>}
+                                    </td>
+                                    <td>{item.fullName}</td>
                                     <td>{item.phone}</td>
                                     <td>{item.createdDate}</td>
-                                    <td>{item.authorities.name}</td>
+                                    <td>{item.authorities.name}
+                                        <i onClick={()=>setAccChange(item.id, item.authorities.name)} data-bs-toggle="modal" data-bs-target="#modalrole" class="fa fa-edit iconaction iconacc"></i>
+                                    </td>
                                     <td class="sticky-col">
                                         {btn}
                                     </td>
@@ -196,6 +216,29 @@ const AdminUser = ()=>{
                     </div>
                 </div>
             </div>
+
+             <div class="modal fade" id="modalrole" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Thay đổi quyền tài khoản</h5>
+            </div>
+            <div class="modal-body">
+                <div>
+                    <input type="hidden" id="idacc"/>
+                    <select class="form-control" id="rolechange">
+                        <option value="ROLE_USER">Tài khoản người dùng</option>
+                        <option value="ROLE_ADMIN">Tài khoản admin</option>
+                    </select>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
+                        <button onClick={()=>changerole()} class="btn btn-primary">Thay đổi</button>
+                      </div>
+                </div>
+            </div>
+          </div>
+        </div>
+      </div>
         </>
     );
 }

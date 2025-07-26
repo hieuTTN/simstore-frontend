@@ -62,7 +62,8 @@ const AdminAddVoucher = ()=>{
             if(id != null){
                 var response = await getMethod('/api/voucher/admin/findById?id='+id)
                 var result = await response.json();
-                setItem(result)
+                console.log(result);
+                setItem(result);
                 document.getElementById("lockvoucher").checked = result.block
             }
         };
@@ -82,19 +83,19 @@ const AdminAddVoucher = ()=>{
             <main class="main row">
             <div class="col-sm-5">
                     <label class="lb-form">Mã voucher</label>
-                    <input id="code" type="text" class="form-control"/>
+                    <input id="code" type="text" defaultValue={item?.code} class="form-control"/>
                     <label class="lb-form">Tên voucher</label>
-                    <input id="namevoucher" type="text" class="form-control"/>
+                    <input id="namevoucher" type="text" defaultValue={item?.name} class="form-control"/>
                     <label class="lb-form">Số tiền tối thiểu</label>
-                    <input id="minamount" type="number" class="form-control"/>
+                    <input id="minamount" type="number" defaultValue={item?.minAmount} class="form-control"/>
                     <label class="lb-form">Giảm giá</label>
-                    <input id="discount" type="number" class="form-control"/>
+                    <input id="discount" type="number" defaultValue={item?.discount} class="form-control"/>
                 </div>
                 <div class="col-sm-5">
                     <label class="lb-form">Từ ngày</label>
-                    <input id="from" type="date" class="form-control"/>
+                    <input id="from" type="date" defaultValue={item?.startDate} class="form-control"/>
                     <label class="lb-form">Đến ngày</label>
-                    <input id="to" type="date" class="form-control"/>
+                    <input id="to" type="date" defaultValue={item?.endDate} class="form-control"/>
                     <label class="checkbox-custom">Khóa voucher 
                         <input id="lockvoucher" type="checkbox"/>
                         <span class="checkmark-checkbox"></span>

@@ -13,26 +13,16 @@ var linkImage = ''
 const AdminBanner = ()=>{
     const [items, setItems] = useState([]);
     const [banner, setBanner] = useState(null);
-    const [pageCount, setpageCount] = useState(0);
     useEffect(()=>{
         getData();
     }, []);
 
     const getData = async() =>{
-        var response = await getMethod('/api/banner/public/search?&size='+size+'&q=&page='+0)
+        var response = await getMethod('/api/banner/public/findAll')
         var result = await response.json();
-        setItems(result.content)
-        setpageCount(result.totalPages)
-        url = '/api/banner/public/search?&size='+size+'&q=&page='
+        setItems(result)
     };
 
-    const handlePageClick = async (data)=>{
-        var currentPage = data.selected
-        var response = await getMethod(url+currentPage)
-        var result = await response.json();
-        setItems(result.content)
-        setpageCount(result.totalPages)
-    }
     
 
     async function deleteData(id){
@@ -146,22 +136,6 @@ const AdminBanner = ()=>{
                         </tbody>
                     </table>
 
-                    <ReactPaginate 
-                        marginPagesDisplayed={2} 
-                        pageCount={pageCount} 
-                        onPageChange={handlePageClick}
-                        containerClassName={'pagination'} 
-                        pageClassName={'page-item'} 
-                        pageLinkClassName={'page-link'}
-                        previousClassName='page-item'
-                        previousLinkClassName='page-link'
-                        nextClassName='page-item'
-                        nextLinkClassName='page-link'
-                        breakClassName='page-item'
-                        breakLinkClassName='page-link' 
-                        previousLabel='Trang trước'
-                        nextLabel='Trang sau'
-                        activeClassName='active'/>
                 </div>
             </div>
 

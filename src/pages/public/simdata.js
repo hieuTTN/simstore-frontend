@@ -222,7 +222,7 @@ function SimData() {
 
 
      <div id="modal" className="modal">
-      <div className="modal-content">
+      <div className="modal-content-custom">
         <span className="close" onClick={()=>toggleModal()} style={{ color: 'black', fontSize: '40px' }}>&times;</span>
         <h2 style={{ color: 'black', textAlign: 'center', fontFamily: "'Be Vietnam Pro', sans-serif" }}>Chu kỳ gói</h2>
         <h3 style={{ color: 'black', paddingBottom: '2rem', fontSize: '25px' }}>

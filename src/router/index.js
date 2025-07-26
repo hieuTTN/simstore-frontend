@@ -1,6 +1,6 @@
 import layoutAdmin from '../layout/admin/Layout'
 import layoutLogin from '../layout/user/loginlayout/login'
-import CheckoutLayout from '../layout/user/checkout/checkouLayout'
+import IndonLayout from '../layout/admin/IndonLayout'
 import 'bootstrap/dist/css/bootstrap.min.css';
 //admin
 import AdminIndex from '../pages/admin/index'
@@ -17,6 +17,7 @@ import AdminAddImport from '../pages/admin/addimportproduct'
 import AdminInvoice from '../pages/admin/invoice'
 import AdminBanner from '../pages/admin/banner'
 import AdminUser from '../pages/admin/user'
+import Indon from '../pages/admin/indon'
 
 
 //public
@@ -35,6 +36,7 @@ import SimData from '../pages/public/simdata'
 import GioHang from '../pages/public/giohang'
 import ThanhToan from '../pages/public/thanhtoan'
 import DatLaiMatKhau from '../pages/public/datlaimatkhau'
+import DonHang from '../pages/public/donhang'
 
 const publicRoutes = [
     { path: "/", component: index},
@@ -53,6 +55,7 @@ const publicRoutes = [
     { path: "/giohang", component: GioHang},
     { path: "/thanhtoan", component: ThanhToan},
     { path: "/datlaimatkhau", component: DatLaiMatKhau},
+    { path: "/donhang", component: DonHang},
 ];
 
 
@@ -71,6 +74,7 @@ const adminRoutes = [
     { path: "/admin/don-hang", component: AdminInvoice, layout: layoutAdmin },
     { path: "/admin/banner", component: AdminBanner, layout: layoutAdmin },
     { path: "/admin/user", component: AdminUser, layout: layoutAdmin },
+    { path: "/admin/in-don", component: Indon, layout: IndonLayout },
 ];
 
 

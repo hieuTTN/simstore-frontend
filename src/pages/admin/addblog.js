@@ -24,7 +24,6 @@ async function saveBlog() {
         "description": document.getElementById("description").value,
         "content": description,
         "imageBanner": linkbanner,
-        "primaryBlog": document.getElementById("primaryBlog").checked
     }
 
     const response = await postMethodPayload('/api/blog/admin/create',blog)
@@ -59,7 +58,6 @@ const AdminAddBlog = ()=>{
                 setItem(result)
                 linkbanner = result.imageBanner
                 description = result.content;
-                document.getElementById("primaryBlog").checked = result.primaryBlog
                 document.getElementById("imgpreview").src = result.imageBanner
             }
         };
@@ -90,10 +88,6 @@ const AdminAddBlog = ()=>{
                 <div class="col-sm-5">
                     <label class="lb-form">Tiêu đề blog</label>
                     <input defaultValue={blog?.title} id="title" type="text" class="form-control"/>
-                    <label class="checkbox-custom">Blog chính 
-                        <input id="primaryBlog" type="checkbox"/>
-                        <span class="checkmark-checkbox"></span>
-                    </label><br/>
                     <label class="lb-form">Ảnh bài viết</label>
                     <input onChange={onchangeFile} id="fileimage" type="file" class="form-control"/>
                     <img id="imgpreview" className='imgadd'/>
